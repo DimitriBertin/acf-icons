@@ -2,7 +2,7 @@
 /**
  * Plugin Name: ACF Icons
  * Description: Add any icons from library.
- * Version: 0.0.2
+ * Version: 0.0.1
  * Author: Dimitri Bertin
  * Author URI: https://dimitribertin.com
  * License: GPL2
@@ -22,7 +22,7 @@ use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 // 🧩 Configuration du système de mise à jour automatique via GitHub
 $myUpdateChecker = PucFactory::buildUpdateChecker(
-    'https://github.com/dimdamdoum/acf-icons/', // URL de ton repo GitHub
+    'https://github.com/DimitriBertin/acf-icons/', // URL de ton repo GitHub
     __FILE__,                                   // Fichier principal du plugin
     'acf-icons'                                 // Slug unique du plugin
 );
