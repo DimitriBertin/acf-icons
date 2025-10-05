@@ -1,0 +1,16 @@
+# Ignorer les dépendances Composer
+/vendor/
+
+# Ignorer les fichiers locaux de configuration
+/.env
+/.DS_Store
+/node_modules/
+/npm-debug.log
+
+# Ignorer les fichiers générés par l'IDE
+/.idea/
+/*.iml
+
+# Ignorer les fichiers temporaires
+*.log
+*.cache

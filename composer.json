@@ -1,0 +1,16 @@
+{
+  "name": "dimdamdoum/acf-icons",
+  "autoload": {
+      "psr-4": {
+          "Dimdamdoum\\AcfIcons\\": "src/"
+      }
+  },
+  "repositories": [
+ 
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "yahnis-elsts/plugin-update-checker": "^5.6"
+  }
+}
