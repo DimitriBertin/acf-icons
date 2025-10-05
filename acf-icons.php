@@ -2,7 +2,7 @@
 /**
  * Plugin Name: ACF Icons
  * Description: Add any icons from library.
- * Version: 0.0.1
+ * Version: 0.0.2
  * Author: Dimitri Bertin
  * Author URI: https://dimitribertin.com
  * License: GPL2
@@ -29,9 +29,6 @@ $myUpdateChecker = PucFactory::buildUpdateChecker(
 
 // 🪄 Définir la branche contenant les versions stables (souvent "main" ou "master")
 $myUpdateChecker->setBranch('main');
-
-// 🔒 Si ton dépôt est privé, active cette ligne :
-// $myUpdateChecker->setAuthentication('ghp_xxxxxxxxxxxxxxxx');
 
 // 🔧 Initialisation du plugin
 function acf_icons_init() {
