@@ -28,16 +28,15 @@ $myUpdateChecker = PucFactory::buildUpdateChecker(
 $myUpdateChecker->setBranch('main');
 
 $api = $myUpdateChecker->getVcsApi();
+$api = $myUpdateChecker->getVcsApi();
 if ( $api ) {
-    $api->addFilter('release_assets', function($assets, $release, $api) {
-        foreach ($assets as $asset) {
-            if (strpos($asset->name, 'acf-icons-') !== false && str_ends_with($asset->name, '.zip')) {
-                return [$asset];
-            }
-        }
-        return $assets;
-    }, 10, 3);
+	// Va chercher un asset nommé "acf-icons-*.zip"
+	$api->enableReleaseAssets('/^acf-icons-.*\.zip$/');
+	
+	// Si le repo est privé, ajoute ton token GitHub :
+	// $myUpdateChecker->setAuthentication('ghp_XXXXXXX');
 }
+
 
 function acf_icons_init() {
 
