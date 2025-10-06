@@ -2,7 +2,7 @@
 /**
  * Plugin Name: ACF Icons
  * Description: Add any icons from library.
- * Version: 0.0.2
+ * Version: 0.0.3
  * Author: Dimitri Bertin
  * Author URI: https://dimitribertin.com
  * License: GPL2
@@ -28,7 +28,6 @@ $myUpdateChecker = PucFactory::buildUpdateChecker(
 $myUpdateChecker->setBranch('main');
 
 $api = $myUpdateChecker->getVcsApi();
-$api = $myUpdateChecker->getVcsApi();
 if ( $api ) {
 	// Va chercher un asset nommé "acf-icons-*.zip"
 	$api->enableReleaseAssets('/^acf-icons-.*\.zip$/');
@@ -36,6 +35,18 @@ if ( $api ) {
 	// Si le repo est privé, ajoute ton token GitHub :
 	// $myUpdateChecker->setAuthentication('ghp_XXXXXXX');
 }
+
+
+// 🔁 Vérifier automatiquement les mises à jour quand on est sur l'admin
+add_action('admin_init', function() use ($myUpdateChecker) {
+	// On ne vérifie qu'une fois par chargement admin
+	if ( current_user_can('update_plugins') ) {
+		$myUpdateChecker->checkForUpdates();
+	}
+});
+
+// 🚫 Supprimer le lien “Check for updates”
+add_filter('puc_manual_check_link-acf-icons', '__return_empty_string');
 
 
 function acf_icons_init() {
