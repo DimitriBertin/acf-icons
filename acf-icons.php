@@ -27,16 +27,21 @@ $myUpdateChecker = PucFactory::buildUpdateChecker(
 
 $myUpdateChecker->setBranch('main');
 
-$myUpdateChecker->getVcsApi()->addFilter('release_assets', function($assets, $release, $api) {
-  foreach ($assets as $asset) {
-      if (strpos($asset->name, 'acf-icons-') !== false && str_ends_with($asset->name, '.zip')) {
-          return [$asset];
-      }
-  }
-  return $assets;
-}, 10, 3);
+$api = $myUpdateChecker->getVcsApi();
+if ( $api ) {
+    $api->addFilter('release_assets', function($assets, $release, $api) {
+        foreach ($assets as $asset) {
+            if (strpos($asset->name, 'acf-icons-') !== false && str_ends_with($asset->name, '.zip')) {
+                return [$asset];
+            }
+        }
+        return $assets;
+    }, 10, 3);
+}
 
 function acf_icons_init() {
-  
+
 }
 add_action( 'plugins_loaded', 'acf_icons_init' );
+
+
