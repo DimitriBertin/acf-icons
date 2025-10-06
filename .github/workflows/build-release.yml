@@ -2,7 +2,8 @@ name: Build WordPress ZIP
 
 on:
   release:
-    types: [published]
+    types: [published, edited]
+  workflow_dispatch:
 
 permissions:
   contents: write 
