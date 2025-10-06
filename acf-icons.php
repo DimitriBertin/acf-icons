@@ -30,6 +30,16 @@ $myUpdateChecker = PucFactory::buildUpdateChecker(
 // 🪄 Définir la branche contenant les versions stables (souvent "main" ou "master")
 $myUpdateChecker->setBranch('main');
 
+// 👇 Ajoute ce bloc pour cibler ton ZIP custom
+$myUpdateChecker->getVcsApi()->addFilter('release_assets', function($assets, $release, $api) {
+  foreach ($assets as $asset) {
+      if (strpos($asset->name, 'acf-icons-') !== false && str_ends_with($asset->name, '.zip')) {
+          return [$asset];
+      }
+  }
+  return $assets;
+}, 10, 3);
+
 // 🔧 Initialisation du plugin
 function acf_icons_init() {
     // Ton code ici (par ex. : register ACF fields, etc.)
