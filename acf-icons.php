@@ -2,7 +2,7 @@
 /**
  * Plugin Name: ACF Icons
  * Description: Add any icons from library.
- * Version: 0.0.1
+ * Version: 0.0.2
  * Author: Dimitri Bertin
  * Author URI: https://dimitribertin.com
  * License: GPL2
